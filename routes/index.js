@@ -9,46 +9,15 @@ const router = express.Router();
 mongoose.connect('mongodb://localhost:27017'); // connect to database
 
 /* GET home page. */
-const RatingData = [{
-  rank: 1,
-  grade: 'A++',
-  views: 200,
-  name: 'HeyYOu',
-  video: 500,
-  uploads: 10000,
-  subscribers: 2000,
-
-},
-{
-  rank: 365,
-  grade: 'A++',
-  views: 200,
-  name: 'sachu',
-  video: 500,
-  uploads: 10000,
-  subscribers: 2000,
-
-},
-{
-  rank: 3,
-  grade: 'A++',
-  views: 200,
-  name: 'HeyYOu',
-  video: 500,
-  uploads: 10000,
-  subscribers: 2000,
-
-}];
-router.get('/', (req, res, next) => {
-  let message = 'The List';
-  model.find({
-  }, (err, user) => {
+const csvData = [];
+router.get('/', async (req, res, next) => {
+  const message = 'The Highest Rated Movie List';
+  await model.find({
+  }, async (err, user) => {
     if (err) {
       res.render('error', { message: 'Something very happened.Bad Bug. Check Mongo connection', error: { status: 404, stack: 'Mongo error' } });
     } else if (user == '') {
-      message = 'Csv data is being imported for the first time';
-      const csvData = [];
-      csv
+      await csv
         .fromPath('data/data.csv')
         .on('data', (data) => {
           const usefull = {
@@ -63,13 +32,14 @@ router.get('/', (req, res, next) => {
 
           csvData.push(usefull);
         })
-        .on('end', () => {
-          model.create(csvData, (err, documents) => {
+        .on('end', async () => {
+          await model.create(csvData, (err, documents) => {
             if (err) throw err;
           });
         });
+      user = csvData;
     }
-    res.render('index', { title: 'Express', data: user, message });
+    await res.render('index', { title: 'MovieBuff', data: user, message });
   });
 });
 

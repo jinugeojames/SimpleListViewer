@@ -1,5 +1,15 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+
+<!-- Nav menu with user information -->
+<nav class="navbar navbar-inverse navbar-fixed-top pmd-navbar pmd-z-depth">
+	<div class="container-fluid">
+		<!-- User information -->
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <a href="javascript:void(0);" class="navbar-brand navbar-brand-custome">{{title}}</a>
+		</div>
+	</div>
+	<div class="pmd-sidebar-overlay"></div>
+</nav>
 
 <div class="pmd-card pmd-card-inverse pmd-z-depth">
     <h1>{{message}}</h1>
@@ -7,6 +17,7 @@
         <thead>
             <tr>
                 <th>Rank</th>
+                <th></th>
                 <th>Grade</th>
                 <th>views</th>
                 <th>Channel name</th>
@@ -18,6 +29,7 @@
             {{#each data}}
             <tr>
                 <td>{{this.rank}}</td>
+                <td></td>
                 <td>{{this.grade}}</td>
                 <td>{{this.views}}</td>
                 <td>{{this.name}}</td>
@@ -28,3 +40,13 @@
         </tbody>
     </table>
 </div>
+<!-- Footer -->
+<footer class="page-footer font-small cyan darken-3">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+      <p style="color:whitesmoke">© 2018 Copyright: MovieBuff.com</p>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->

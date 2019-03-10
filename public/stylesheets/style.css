@@ -31,11 +31,7 @@
 
 /* Propeller Datatable */
 @import "http://propeller.in/components/data-table/css/pmd-datatable.css";
-/* body {
-  padding: 50px;
+body {
+  background-color: #222;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
-a {
-  color: #00B7FF;
-} */

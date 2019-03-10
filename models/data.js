@@ -8,8 +8,8 @@ const data = mongoose.model('data', new Schema({
   rank: {
     type: String, trim: true,
   },
-  grade: { type: String },
-  name: { type: String },
+  grade: { type: String, trim: true },
+  name: { type: String, trim: true },
   uploads: {
     type: String, trim: true,
   },
