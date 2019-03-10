@@ -1,3 +1,8 @@
+/**
+ *  A Simple Movie rating showing webapp
+ *  @author: Sachu Shaji Abraham
+ *  @description: Stacks used are Node.js, Express Js , Mongo and HandleBars
+ */
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -6,7 +11,6 @@ const mongoose = require('mongoose');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 
 const app = express();
 
@@ -21,7 +25,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 mongoose.connect('mongodb://localhost:27017'); // connect to database
 

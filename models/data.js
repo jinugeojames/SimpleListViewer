@@ -1,9 +1,13 @@
+/**
+ * Mongo db model for the csv file
+ */
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
 
 // set up a mongoose model and pass it using module.exports
+
 const data = mongoose.model('data', new Schema({
   rank: {
     type: String, trim: true,

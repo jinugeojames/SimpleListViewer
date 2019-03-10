@@ -1,6 +1,11 @@
+/**
+ * Index Page which fetches the data from the csv files and shows the corresponding tables
+ */
+
+
+// modules required
 const express = require('express');
 const mongoose = require('mongoose');
-const fs = require('fs');
 const csv = require('fast-csv');
 const model = require('../models/data.js'); // get our mongoose model
 
@@ -17,6 +22,8 @@ router.get('/', async (req, res, next) => {
     if (err) {
       res.render('error', { message: 'Something very happened.Bad Bug. Check Mongo connection', error: { status: 404, stack: 'Mongo error' } });
     } else if (user == '') {
+
+      // Extracting data from the csv file and storing into the database
       await csv
         .fromPath('data/data.csv')
         .on('data', (data) => {
