@@ -2,6 +2,7 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
@@ -21,6 +22,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+mongoose.connect('mongodb://localhost:27017'); // connect to database
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
